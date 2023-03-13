@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <user-index text="shshsh"></user-index>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+//import HelloWorld from "./components/HelloWorld.vue";
+import UserIndex from "./components/User/UserIndex.jsx";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    UserIndex,
   },
 };
 </script>
