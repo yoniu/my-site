@@ -1,7 +1,14 @@
+<template>
+  <div>
+    <el-button @click="handleShow" @handleClose="handleClose">默认按钮</el-button>
+    <user-login :show="isShow"></user-login>
+  </div>
+</template>
+
+<script>
 import UserLogin from './Login.vue'
 
 export default {
-  props: ["text"],
   data() {
     return {
       isShow: false
@@ -19,11 +26,7 @@ export default {
       console.log('接受关闭');
     }
   },
-  render(h) {
-    return <div>
-      <el-button vOn:click={this.handleShow} vOn:handleClose={this.handleClose}>默认按钮</el-button>
-      <user-login show={this.isShow}></user-login>
-      {this.text}
-    </div>;
-  },
 };
+</script>
+
+<style lang="less" scoped></style>

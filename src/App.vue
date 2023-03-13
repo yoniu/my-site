@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <user-index text="shshsh"></user-index>
+    <background-image />
+    <navigation />
   </div>
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
-import UserIndex from "./components/User/UserIndex.jsx";
+import BackgroundImage from "./components/BackgroundImage";
+import Navigation from "./components/Navigation";
+
 
 export default {
   name: "App",
   components: {
-    UserIndex,
+    BackgroundImage,
+    Navigation
   },
+  computed: {
+  },
+  mounted() {
+  },
+  data() {
+    return {
+    }
+  }
 };
 </script>
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 1rem;
 }
 </style>
