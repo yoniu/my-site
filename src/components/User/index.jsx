@@ -34,9 +34,9 @@ export default {
           <button class="circle-button primary" onClick={this.handleOpenLoginDialog}><icon-user /></button>
         }
         <el-dialog
-          title="登录"
-          width="30%"
           center
+          title="登录"
+          width="max(30%, 300px)"
           visible={this.LoginDialogVisble}
           vOn:close={this.handleCloseLoginDialog}
         >
