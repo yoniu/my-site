@@ -1,3 +1,5 @@
+import "./index.less";
+
 import IconUser from "../Icon/User";
 
 export default {
