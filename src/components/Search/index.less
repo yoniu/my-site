@@ -1,0 +1,33 @@
+@import url("@/assets/var.less");
+
+#search {
+  flex: 0 0 auto;
+  width: min(90%, 640px);
+  margin: 2rem;
+
+  .container {
+    display: flex;
+    align-items: center;
+    color: @text-color;
+    background-color: rgba(@theme-color, @alpha-primary);
+    backdrop-filter: blur(20px);
+    border-radius: 5px;
+    line-height: 1;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      background-color: @theme-color;
+    }
+
+    .search-input {
+      flex: 1 0 auto;
+      outline: 0;
+      border: 0;
+      background-color: transparent;
+      padding: .5rem;
+      font-size: 1.5rem;
+      line-height: 1;
+
+    }
+  }
+}

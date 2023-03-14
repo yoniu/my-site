@@ -1,4 +1,5 @@
 @import url("@/assets/var.less");
+@import url("@/assets/function.less");
 
 .user-card {
   display: flex;
@@ -19,9 +20,7 @@
 
   .user-name {
     flex: 1 0 auto;
-    color: @theme-color;
-    font-weight: bold;
-    text-shadow: 0 1px 15px rgba(@text-color, @alpha-primary);
+    .shadow-text();
   }
 
   .user-logout {
