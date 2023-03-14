@@ -1,20 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import CommonModule from "./common";
+import UserModule from "./user";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    siteName: "油老师の主页",
-    // 网页背景图，如果获取不到设置的背景图，就获取必应每日壁纸
-    backgroundImage:
-      window.localStorage.getItem("bg-url") ||
-      "https://api.oneneko.com/v1/bing_today",
-    // 背景图是否模糊处理
-    backgroundBlur: window.localStorage.getItem("bg-blur") || false,
+  modules: {
+    common: CommonModule,
+    user: UserModule,
   },
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
 });

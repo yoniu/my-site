@@ -4,10 +4,10 @@ export default {
   name: "BackgroundImage",
   computed: {
     backgroundImage() {
-      return this.$store.state.backgroundImage;
+      return this.$store.state.common.backgroundImage;
     },
     backgroundBlur() {
-      return this.$store.state.backgroundBlur;
+      return this.$store.state.common.backgroundBlur;
     }
   },
   render(h) {

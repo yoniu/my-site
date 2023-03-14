@@ -1,3 +1,5 @@
+@import url("./var.less");
+
 *, *::after, *::before {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -8,5 +10,43 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #fff;
+  color: @theme-color;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.circle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @text-color;
+  background-color: rgba(@theme-color, @alpha-primary);
+  backdrop-filter: blur(@blur);
+  outline: 0;
+  border: 0;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &.primary {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &:hover {
+    opacity: @alpha-primary;
+  }
+
 }

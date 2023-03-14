@@ -1,3 +1,5 @@
+@import url("../../assets/var.less");
+
 #background {
   position: fixed;
   display: flex;
@@ -19,7 +21,7 @@
     object-fit: cover;
 
     &.blur {
-      filter: blur(20px);
+      filter: blur(@blur);
     }
   }
 }

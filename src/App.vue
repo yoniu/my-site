@@ -36,6 +36,6 @@ export default {
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
-  padding: 1rem;
+  padding: 2rem 3rem;
 }
 </style>
