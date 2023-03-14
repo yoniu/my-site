@@ -2,12 +2,32 @@ import Vue from "vue";
 import App from "./App";
 import store from "./store";
 
-import { Button, Dialog } from "element-ui";
+import {
+  Button,
+  Dialog,
+  Form,
+  FormItem,
+  Input,
+  Loading,
+  Message,
+  MessageBox,
+  Drawer,
+} from "element-ui";
 
 import "./assets/style.less";
 
 Vue.use(Button);
 Vue.use(Dialog);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
+Vue.use(Drawer);
+
+Vue.use(Loading.directive);
+
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$message = Message;
 
 Vue.config.productionTip = false;
 
