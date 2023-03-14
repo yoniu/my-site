@@ -1,5 +1,6 @@
 export default {
   name: "UserLogin",
+  props: ["show"],
   emits: ["action-handle-close"],
   data() {
     return {
@@ -52,6 +53,10 @@ export default {
         })
         .finally(() => {
           this.isPending = false;
+          // 重置表单
+          for(let i in this.form) {
+            this.form[i] = "";
+          }
         });
     },
     // 关闭登录框
@@ -61,18 +66,26 @@ export default {
   },
   render(h) {
     return (
-      <el-form ref="form" model={this.form} onInput={() => {}} disabled={this.isPending}>
-        <el-form-item>
-          <el-input vModel={this.form.username} placeholder="用户名 / 邮箱"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-input vModel={this.form.password} placeholder="密码" show-password vOn:keypress_enter={this.handleLogin}></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" load={this.isPending} onClick={this.handleLogin}>登录</el-button>
-          <el-button onClick={this.handleClose}>取消</el-button>
-        </el-form-item>
-      </el-form>
+      <el-dialog
+        center
+        title="登录"
+        width="max(30%, 300px)"
+        visible={this.show}
+        vOn:close={this.handleClose}
+      >
+        <el-form ref="form" model={this.form} onInput={() => {}} disabled={this.isPending}>
+          <el-form-item>
+            <el-input vModel={this.form.username} placeholder="用户名 / 邮箱"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input vModel={this.form.password} placeholder="密码" show-password vOn:keypress_enter={this.handleLogin}></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" load={this.isPending} onClick={this.handleLogin}>登录</el-button>
+            <el-button onClick={this.handleClose}>取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
     );
   }
 };

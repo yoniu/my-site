@@ -3,6 +3,7 @@ import "./index.less";
 import IconUser from "../Icon/User";
 
 import UserLogin from "./Login";
+import UserDrawer from "./Drawer";
 
 import { MD5 } from "crypto-js";
 
@@ -10,7 +11,8 @@ export default {
   name: "UserIndex",
   components: {
     IconUser,
-    UserLogin
+    UserLogin,
+    UserDrawer
   },
   data() {
     return {
@@ -33,12 +35,14 @@ export default {
     }
   },
   methods: {
+    // 登录弹窗显示关闭
     handleOpenLoginDialog() {
       this.LoginDialogVisble = true;
     },
     handleCloseLoginDialog() {
       this.LoginDialogVisble = false;
     },
+    // 抽屉显示关闭
     handleOpenDrawer() {
       this.DrawVisible = true;
     },
@@ -63,27 +67,12 @@ export default {
         {
           // 已登录显示内容
           this.currentUser && 
-          <el-drawer
-            title="我是标题"
-            visible={this.DrawVisible}
-            direction="rtl"
-            before-close={this.handleCloseDrawer}
-          >
-            <span>我来啦!</span>
-          </el-drawer>
+          <user-drawer show={this.DrawVisible} vOn:action-handle-close={this.handleCloseDrawer} />
         }
         {
           // 未登录显示内容
           !this.currentUser && 
-          <el-dialog
-            center
-            title="登录"
-            width="max(30%, 300px)"
-            visible={this.LoginDialogVisble}
-            vOn:close={this.handleCloseLoginDialog}
-          >
-            <user-login vOn:action-handle-close={this.handleCloseLoginDialog}/>
-          </el-dialog>
+          <user-login show={this.LoginDialogVisble} vOn:action-handle-close={this.handleCloseLoginDialog}/>
         }
       </div>
     );

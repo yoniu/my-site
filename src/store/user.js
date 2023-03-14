@@ -30,6 +30,11 @@ export default {
       if (state.currentUser) return Promise.reject(new Error("已登录"));
       return dispatch("requestLoginByUsername", data);
     },
+    handleLogout({ commit }) {
+      User.logOut().then(() => {
+        commit("setCurrentUser");
+      });
+    },
     // 使用用户名登录
     requestLoginByUsername(context, { username, password }) {
       return User.logIn(username, password);
