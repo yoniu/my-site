@@ -44,6 +44,7 @@ body {
   line-height: 1;
   border-radius: 50%;
   cursor: pointer;
+  transition: all .3s ease-in-out;
 
   &.primary {
     width: 2.5rem;
@@ -53,12 +54,26 @@ body {
     img {
       width: 2rem;
       height: 2rem;
-      border-radius: 50%;
+    }
+  }
+
+  &.secondary {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
 
   &:hover {
     filter: brightness(@alpha-primary);
+  }
+
+  img {
+    border-radius: 50%;
   }
 
 }

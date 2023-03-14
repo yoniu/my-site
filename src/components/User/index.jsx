@@ -5,8 +5,6 @@ import IconUser from "../Icon/User";
 import UserLogin from "./Login";
 import UserDrawer from "./Drawer";
 
-import { MD5 } from "crypto-js";
-
 export default {
   name: "UserIndex",
   components: {
@@ -31,7 +29,7 @@ export default {
       return this.$store.getters.email;
     },
     gravatar() {
-      return "https://cravatar.cn/avatar/" + MD5(this.email);
+      return this.$store.getters.gravatar;
     }
   },
   methods: {
@@ -54,6 +52,7 @@ export default {
     return (
       <div id="user">
         {
+          // 判断登录：已登录显示头像，未登录显示登录按钮
           this.currentUser 
           ? 
           <button class="circle-button primary" onClick={this.handleOpenDrawer}>

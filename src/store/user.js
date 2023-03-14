@@ -1,6 +1,8 @@
 import AV, { User } from "leancloud-storage";
 import Leancloud from "../configs/leancloud";
 
+import { MD5 } from "crypto-js";
+
 AV.init(Leancloud);
 
 export default {
@@ -16,6 +18,10 @@ export default {
     // 获取登录邮箱
     email: (state) => {
       return state.currentUser ? state.currentUser.getEmail() : "";
+    },
+    // 获取 gravatar 头像
+    gravatar: (_, getters) => {
+      return "https://cravatar.cn/avatar/" + MD5(getters.email);
     },
   },
   mutations: {
@@ -36,7 +42,7 @@ export default {
       });
     },
     // 使用用户名登录
-    requestLoginByUsername(context, { username, password }) {
+    requestLoginByUsername(_, { username, password }) {
       return User.logIn(username, password);
     },
   },

@@ -12,6 +12,8 @@ import {
   Message,
   MessageBox,
   Drawer,
+  Row,
+  Col,
 } from "element-ui";
 
 import "./assets/style.less";
@@ -22,12 +24,15 @@ Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(Drawer);
+Vue.use(Row);
+Vue.use(Col);
 
 Vue.use(Loading.directive);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox.confirm;
 
 Vue.config.productionTip = false;
 

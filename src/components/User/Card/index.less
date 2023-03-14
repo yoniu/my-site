@@ -1,0 +1,30 @@
+@import url("@/assets/var.less");
+
+.user-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .user-avatar {
+    flex: 0 0 auto;
+    margin-right: .5rem;
+
+    img {
+      width: 64px;
+      height: 64px;
+      border: 4px solid @theme-color;
+      border-radius: 50%;
+    }
+  }
+
+  .user-name {
+    flex: 1 0 auto;
+    color: @theme-color;
+    font-weight: bold;
+    text-shadow: 0 1px 15px rgba(@text-color, @alpha-primary);
+  }
+
+  .user-logout {
+    flex: 0 0 auto;
+  }
+}
