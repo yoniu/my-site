@@ -14,6 +14,7 @@ import {
   Drawer,
   Row,
   Col,
+  Popover,
 } from "element-ui";
 
 import "./assets/style.less";
@@ -26,6 +27,7 @@ Vue.use(Input);
 Vue.use(Drawer);
 Vue.use(Row);
 Vue.use(Col);
+Vue.use(Popover);
 
 Vue.use(Loading.directive);
 

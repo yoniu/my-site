@@ -1,8 +1,46 @@
 @import url("@/assets/var.less");
 
 #footer {
+  padding: .5rem 3rem;
   width: 100%;
-  background-color: rgba(@text-color, @alpha-primary);
-  backdrop-filter: blur(20px);
-  padding: 1rem 3rem;
+  background-color: rgba(@text-color, @alpha-secondary);
+  backdrop-filter: blur(3px);
+  font-size: .9rem;
+  opacity: @alpha-secondary;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+    background-color: @text-color;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+  a {
+    color: @theme-color;
+
+    &:hover {
+      opacity: @alpha-primary;
+    }
+  }
 }
