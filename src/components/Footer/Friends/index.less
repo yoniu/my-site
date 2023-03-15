@@ -1,0 +1,25 @@
+@import url("@/assets/var.less");
+
+.friends {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+
+  & > a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: lightsteelblue;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      color: darkslateblue;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &:hover > a:not(:hover) {
+    opacity: @alpha-secondary;
+  }
+}
