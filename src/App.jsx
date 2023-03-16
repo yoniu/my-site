@@ -4,12 +4,15 @@ import Search from "./components/Search";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
 
+import SearchHelper from "./components/SearchHelper";
+
 export default {
   name: "App",
   components: {
     BackgroundImage,
     Navigation,
-    Search
+    Search,
+    SearchHelper,
   },
   render(h) {
     return (
@@ -19,6 +22,7 @@ export default {
         <Search />
         <Cards />
         <Footer />
+        <SearchHelper />
       </div>
     );
   }

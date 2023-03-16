@@ -1,0 +1,51 @@
+@import url("@/assets/var.less");
+
+#search-helper{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(@text-color, @alpha-secondary);
+
+  .container {
+    position: relative;
+    padding: 1rem;
+    background-color: @theme-color;
+    border-radius: 10px;
+    min-width: min(90%, 600px);
+  }
+  
+  .search-input {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(@text-color, @alpha-secondary);
+
+    input[type="text"] {
+      flex: 1 0 auto;
+      background-color: transparent;
+      font-size: 1.2rem;
+      color: @text-color;
+      border: 0;
+      outline: 0;
+    }
+    button {
+      flex: 0 0 auto;
+      font-size: 1.2rem;
+      color: @text-color;
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        opacity: @alpha-secondary;
+      }
+    }
+  }
+}

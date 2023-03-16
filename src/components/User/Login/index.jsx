@@ -78,7 +78,7 @@ export default {
             <el-input vModel={this.form.username} placeholder="用户名 / 邮箱"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input vModel={this.form.password} placeholder="密码" show-password vOn:keypress_enter={this.handleLogin}></el-input>
+            <el-input vModel={this.form.password} placeholder="密码" show-password vOn:keyup_enter_native={this.handleLogin}></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" load={this.isPending} onClick={this.handleLogin}>登录</el-button>

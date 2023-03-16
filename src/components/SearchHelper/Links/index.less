@@ -1,0 +1,44 @@
+@import url("@/assets/var.less");
+
+#slinks {
+  margin-top: 1rem;
+  line-height: 1;
+
+  .sort {
+    margin-top: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .sort-name {
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 1rem;
+      letter-spacing: 1.2px;
+      color: rgba(@text-color, @alpha-secondary);
+      border-bottom: 1px solid rgba(@text-color, @alpha-secondary);
+    }
+    .sort-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & > * {
+        margin-left: 1rem;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      a {
+        color: @text-color;
+
+        &.hover {
+          color: lightgreen;
+        }
+      }
+    }
+  }
+}
