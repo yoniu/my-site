@@ -4,6 +4,11 @@ import Links from "@/configs/links";
 
 import IconSearch from "@/components/Icon/Search";
 import SearchHelperLinks from "./Links";
+import { nextTick } from "vue";
+
+Links.forEach((v, i) => {
+  v.id = i;
+});
 
 export default {
   name: "SearchHelper",
@@ -21,6 +26,10 @@ export default {
       timer: null,
       // 搜索内容
       text: "",
+      // 当前光标位置
+      current: 0,
+      // 当前搜索列表长度
+      listLength: Links.length,
     }
   },
   computed: {
@@ -35,7 +44,14 @@ export default {
       } else {
         return Links;
       }
-    }
+    },
+  },
+  watch: {
+    visible(val) {
+      if (!val) {
+        this.handleInputBlur();
+      }
+    },
   },
   methods: {
     handleClose() {
@@ -61,7 +77,42 @@ export default {
         this.count = 0;
         // 清除定时器
         clearTimeout(this.timer);
+        // 给输入框添加 focus
+        this.handleInputFocus();
       }
+    },
+    handleInputFocus() {
+      nextTick(() => {
+        this.$refs.rSearchHelperInput.focus();
+      });
+    },
+    handleInputBlur() {
+      nextTick(() => {
+        this.$refs.rSearchHelperInput.blur();
+        if (this.visible) {
+          const { rlinks } = this.$refs.rLinks.$refs;
+          rlinks.focus();
+        }
+      });
+    },
+    handleResetCurrent() {
+      this.current = 0;
+    },
+    handleInputKeyupUp() {
+      if (this.current <= 0) return;
+      this.current--;
+    },
+    handleInputKeyupDown() {
+      if (this.current >= this.listLength - 1) return;
+      this.current++;
+    },
+    handleSetListLength(v) {
+      this.listLength = v;
+    },
+    handleInputKeyupEnter() {
+      const { rlinks } = this.$refs.rLinks.$refs;
+      const a = rlinks.querySelector(".hover");
+      a && a.click();
     },
   },
   mounted() {
@@ -75,10 +126,26 @@ export default {
       <div id="search-helper" vOn:click_self={this.handleClose} vShow={this.visible}>
         <div class="container">
           <div class="search-input">
-            <input type="text" name="search-helper-text" vModel={this.text} placeholder="请输入..." />
+            <input
+              type="text"
+              name="search-helper-text"
+              ref="rSearchHelperInput"
+              placeholder="请输入..."
+              vOn:keyup_down={this.handleInputKeyupDown}
+              vOn:keyup_up={this.handleInputKeyupUp}
+              vOn:keyup_enter={this.handleInputKeyupEnter}
+              vModel={this.text}
+            />
             <button><icon-search /></button>
           </div>
-          <search-helper-links links={ this.mLinks } stress={this.text} />
+          <search-helper-links
+            ref="rLinks"
+            links={ this.mLinks }
+            stress={this.text}
+            current={this.current}
+            vOn:handle-reset-current={this.handleResetCurrent}
+            vOn:handle-set-listLength={this.handleSetListLength}
+          />
         </div>
       </div>
     );
