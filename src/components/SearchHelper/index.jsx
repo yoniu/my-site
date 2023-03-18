@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     handleClose() {
-      //this.visible = false;
+      this.visible = false;
     },
     // 监听键盘事件
     handleKeyup(e) {
