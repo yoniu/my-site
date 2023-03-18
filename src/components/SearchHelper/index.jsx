@@ -59,6 +59,8 @@ export default {
     },
     // 监听键盘事件
     handleKeyup(e) {
+      // 如果当前状态为可视状态则不进行（防止输入框多出 y'y | yy）
+      if (this.visible) return;
       // 如果是事件传入但是按键不为 y
       if (e && e.key !== "y") return;
       // 单击一次加 1
@@ -131,9 +133,13 @@ export default {
               name="search-helper-text"
               ref="rSearchHelperInput"
               placeholder="请输入..."
-              vOn:keyup_down={this.handleInputKeyupDown}
-              vOn:keyup_up={this.handleInputKeyupUp}
+              vOn:keyup_down_prevent={this.handleInputKeyupDown}
+              vOn:keyup_up_prevent={this.handleInputKeyupUp}
+              // 防止光标位置改变
+              vOn:keydown_down_prevent={() => {}}
+              vOn:keydown_up_prevent={() => {}}
               vOn:keyup_enter={this.handleInputKeyupEnter}
+              vOn:keyup_esc={this.handleClose}
               vModel={this.text}
             />
             <button><icon-search /></button>
