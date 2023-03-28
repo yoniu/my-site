@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       // 是否可见
-      visible: true,
+      visible: false,
       // 键盘单击次数
       count: 0,
       // 键盘事件定时器
@@ -125,35 +125,34 @@ export default {
   },
   render(h) {
     return (
-      <div id="search-helper" vOn:click_self={this.handleClose} vShow={this.visible}>
-        <div class="container">
-          <div class="search-input">
-            <input
-              type="text"
-              name="search-helper-text"
-              ref="rSearchHelperInput"
-              placeholder="请输入..."
-              vOn:keyup_down_prevent={this.handleInputKeyupDown}
-              vOn:keyup_up_prevent={this.handleInputKeyupUp}
-              // 防止光标位置改变
-              vOn:keydown_down_prevent={() => {}}
-              vOn:keydown_up_prevent={() => {}}
-              vOn:keyup_enter={this.handleInputKeyupEnter}
-              vOn:keyup_esc={this.handleClose}
-              vModel={this.text}
+      <transition name="fade">
+        <div id="search-helper" vOn:click_self={this.handleClose} vShow={this.visible}>
+          <div class="container">
+            <div class="search-input">
+              <input
+                type="text"
+                name="search-helper-text"
+                ref="rSearchHelperInput"
+                placeholder="请输入..."
+                vOn:keydown_down_prevent={this.handleInputKeyupDown}
+                vOn:keydown_up_prevent={this.handleInputKeyupUp}
+                vOn:keyup_enter={this.handleInputKeyupEnter}
+                vOn:keyup_esc={this.handleClose}
+                vModel={this.text}
+              />
+              <button><icon-search /></button>
+            </div>
+            <search-helper-links
+              ref="rLinks"
+              links={ this.mLinks }
+              stress={this.text}
+              current={this.current}
+              vOn:handle-reset-current={this.handleResetCurrent}
+              vOn:handle-set-listLength={this.handleSetListLength}
             />
-            <button><icon-search /></button>
           </div>
-          <search-helper-links
-            ref="rLinks"
-            links={ this.mLinks }
-            stress={this.text}
-            current={this.current}
-            vOn:handle-reset-current={this.handleResetCurrent}
-            vOn:handle-set-listLength={this.handleSetListLength}
-          />
         </div>
-      </div>
+      </transition>
     );
   },
 };
